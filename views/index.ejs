@@ -1,6 +1,12 @@
 <%include header%>
 <body>
   <div id="container" class="container">
+    <% if (error) { %>
+      <div class="alert alert-error">
+        <%= error %>
+      </div>
+    <% } %>
+
     <% if (success) { %>
       <div class="alert alert-success">
         <%= success %>

@@ -3,6 +3,16 @@ var crypto = require('crypto');
 var router = express.Router();
 var user = require('../models/users');
 
+function checkLogin(req, res, next) {
+  if(req.session.user) {
+    req.flash('error', '以登入');
+    return res.redirect('/')
+  }
+  next();
+}
+
+router.get('/', checkLogin);
+
 router.get('/', function (req, res, next) {
   res.render('login');
 });
